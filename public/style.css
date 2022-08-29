@@ -1,7 +1,9 @@
-/* body {
-    background-color: black;
+body {
+    background-color: #212F3F;
     color: white;
-} */
+    padding: 5%;
+    font-family: 'Montserrat', sans-serif;
+}
 
 .row {
     display: flex;
@@ -20,68 +22,34 @@ input, h4, textarea {
 }
 
 
-.rating {
-    width: 300px;
-    margin: 20px 10px;
+.home-bg {
+    margin-left: 15%;
+    border-radius: 80% 50% 80% 50%;
+    width: 45%;
+    display: block;
+    float: right;
 }
 
-.rating span input {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    opacity: 0;
+.main-section {
+    margin: 5% auto;
+    font-family: 'Sigmar One', cursive;
 }
 
-.rating span label {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    color: #FFF;
-    background: #ccc;
-    font-size: 30px;
-    margin-right: 2px;
-    line-height: 30px;
-    border-radius: 50%;
-    -webkit-border-radius: 50%;
+.home-heading {
+    float: left;
 }
 
-.rating span:hover~span label,
-.rating span:hover label,
-.rating span.checked label,
-.rating span.checked~span label {
-    background: #F90;
-    color: #FFF;
+.home-heading {
+    margin-left: 10%; 
+    font-size: xxx-large;
+    line-height: 50%;
 }
 
-.rating {
-    float:left;
-    width:300px;
+.home-btn {
+    color: #056A4C;
+    margin-right: 5%;
 }
-.rating span { float:right; position:relative; }
-.rating span input {
-    position:absolute;
-    top:0px;
-    left:0px;
-    opacity:0;
-}
-.rating span label {
-    display:inline-block;
-    width:30px;
-    height:30px;
-    text-align:center;
-    color:#FFF;
-    background:#ccc;
-    font-size:30px;
-    margin-right:2px;
-    line-height:30px;
-    border-radius:50%;
-    -webkit-border-radius:50%;
-}
-.rating span:hover ~ span label,
-.rating span:hover label,
-.rating span.checked label,
-.rating span.checked ~ span label {
-    background:#F90;
-    color:#FFF;
+
+.home-btn:hover {
+    color: #1FC667;
 }

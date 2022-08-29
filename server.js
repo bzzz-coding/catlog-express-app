@@ -31,16 +31,22 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json()) // replacing body-parser
 
 
-
 // Read (get request)
 app.get('/', (request, response) => {
+    // response.sendFile(__dirname + '/index.html')
+    response.render('home.ejs')
+})
+
+
+// Read (get request)
+app.get('/log', (request, response) => {
     // response.sendFile(__dirname + '/index.html')
     db.collection('cat-info').find().toArray()
         .then(data => {
             console.log(data)
             let logs = data.map(item => [item.name, item.date])
             console.log(logs)
-            response.render('index.ejs', { info: logs }) // render ejs and pass in info
+            response.render('catlog.ejs', { info: logs }) // render ejs and pass in info
         })
         .catch(error => console.log(error))
 })

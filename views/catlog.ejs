@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Foster Log</title>
+
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <h1>Catlog</h1>
+
+    <section class="row">
+        <section class="column">
+            <h2>Input Cat Data Here</h2>
+            <form action="/api" method="POST">
+                <input type="text" placeholder="Cat Name" name="name">
+                <input type="date" value="2022-08-01" placeholder="Data Entry Date" name="date">
+                <input type="number" placeholder="Birth Year (estimated)" min="2000" max="2022" step="1" value="2022" />
+                <input type="weight" placeholder="Body Weight" name="weight">
+                <input type="text" placeholder="Sex" name="sex">
+
+                <label for="fixing">Neutered/Spayed?</label>
+                <select id="fixing" name="fixing">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+
+                <label for="shots">Vaccines up to date?</label>
+                <select id="shots" name="shots">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+
+                <input type="text" placeholder="Favorite Wet Food" name="wetFood">
+                <input type="text" placeholder="Favorite Dry Food" name="dryFood">
+
+                
+                <textarea cols="40" rows="5" type="text" placeholder="Feeding Note" name="feedingNote"></textarea>
+
+                <input type="text" placeholder="Image" name="image">
+                
+                <textarea cols="40" rows="5" type="text" placeholder="Other Notes" name="otherNote"></textarea>
+                <button type="submit">Submit New</button>
+                <button type="button" id="updateButton">Update Existing</button>
+            </form>
+        </section>
+
+        <section class="column">
+            <h2>Delete Cat Data HERE</h2>
+            <input class="nameToDelete" type="text" placeholder="Name to delete" name="nameToDelete" id="deleteInput">
+            <input class="dateToDelete" type="date" value="2022-08-01" name="dateToDelete">
+            <button id="deleteButton">Delete</button>
+
+            <h2>Most Recent Catlog</h2>
+            <% for (let i = info.length - 1; i > Math.max(0, (info.length - 30)); i--) { %>
+                <li class="alien">
+                    <span>
+                        <%= info[i][0] %> 
+                    </span> <span>
+                        <%= info[i][1] %>
+                    </span>
+                </li>
+                <% } %>
+                    </ul>
+        </section>
+    </section>
+
+
+    <script src="/main.js"></script>
+</body>
+
+</html>
