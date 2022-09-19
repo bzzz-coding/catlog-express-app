@@ -38,13 +38,32 @@ app.get('/', (request, response) => {
 })
 
 
+app.get('/profiles', (request, response) => {
+    db.collection('cat-info').aggregate([ 
+        {$match: {}},
+        {$group: {
+            _id : "$name", 
+            date : { $last: "$date" },
+            birthYear: {$last: "$birthYear"},
+            image: {$last: "$image"} 
+        }} ,
+    ]).toArray()
+        .then(data => {
+            console.log(data)
+            let logs = data.map(item => [item._id, item.birthYear, item.image, item.date])
+            console.log(logs)
+            response.render('profiles.ejs', { info: logs }) // render ejs and pass in info
+        })
+        .catch(error => console.log(error))
+})
+
 // Read (get request)
 app.get('/log', (request, response) => {
     // response.sendFile(__dirname + '/index.html')
-    db.collection('cat-info').find().toArray()
+    db.collection('cat-info').find().sort({ $natural: -1 }).toArray()
         .then(data => {
             console.log(data)
-            let logs = data.map(item => [item.name, item.date])
+            let logs = data.map(item => [item.name, item.date, item.updateDate])
             console.log(logs)
             response.render('catlog.ejs', { info: logs }) // render ejs and pass in info
         })
@@ -61,7 +80,7 @@ app.post('/api', (request, response) => {
     )
         .then(result => {
             console.log(result)
-            response.redirect('/')
+            response.redirect('/log')
         })
         .catch(error => console.log(error))
 })
@@ -76,12 +95,15 @@ app.put('/updateEntry', (request, response) => {
         }
     })
     console.log(request.body)
+    
     db.collection('cat-info').findOneAndUpdate(
         {
             name: request.body.name,
-            date: request.body.date  
+            date: request.body.date
         },
-        { $set: request.body }
+        {
+            $set: request.body,
+        }
     )
         .then(result => {
             console.log(result)

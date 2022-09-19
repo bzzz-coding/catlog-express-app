@@ -2,7 +2,20 @@ body {
     background-color: #212F3F;
     color: white;
     padding: 5%;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    font-size: 16px;
     font-family: 'Montserrat', sans-serif;
+}
+
+.profile-img {
+    width: 400px;
+}
+
+.home-body {
+    background: rgb(46,55,127);
+    background: linear-gradient(100deg, rgba(46,55,127,1) 15%, rgba(106,73,5,1) 40%, rgba(252,191,75,1) 100%);
 }
 
 .row {
@@ -14,24 +27,21 @@ body {
     padding-left: 2%;
 }
 
-input, h4, textarea {
+/* 
+input,
+h4,
+textarea {
     display: block;
     font-size: 20px;
     padding: 4px 2px;
     margin: 2px 0 20px 10px;
-}
+} */
 
 
-.home-bg {
-    margin-left: 15%;
-    border-radius: 80% 50% 80% 50%;
-    width: 45%;
-    display: block;
-    float: right;
-}
+/* === home page styling === */
 
 .main-section {
-    margin: 5% auto;
+    margin: 3% auto;
     font-family: 'Sigmar One', cursive;
 }
 
@@ -39,8 +49,19 @@ input, h4, textarea {
     float: left;
 }
 
+.home-bg {
+    margin-right: 15%;
+    border-radius: 80% 50% 80% 50%;
+    -webkit-box-shadow:0px 0px 75px 18px #b88c2e ;
+    -moz-box-shadow:0px 0px 75px 18px #b88c2e ;
+    box-shadow:0px 0px 75px 18px #b88c2e ;
+    width: 45%;
+    display: block;
+    float: right;
+}
+
 .home-heading {
-    margin-left: 10%; 
+    margin-left: 10%;
     font-size: xxx-large;
     line-height: 50%;
 }
@@ -52,4 +73,55 @@ input, h4, textarea {
 
 .home-btn:hover {
     color: #1FC667;
+}
+
+
+/* display: flex;
+    flex-direction: column; */
+/* justify-content: center; */
+
+/* font-family: sans-serif; */
+
+
+
+
+/* === Catlog page === */
+
+.catlog-page {
+    background-color: #056A4C;
+}
+
+.catlog-main {
+    padding: 5% 20%;
+}
+
+.catlog-page h2 {
+    font-family: 'Sigmar One', cursive;
+    font-size: xx-large;
+}
+
+.btn-row {
+    text-align: right;
+}
+
+.return {
+    font-family: 'Sigmar One', cursive;
+    font-size: x-large;
+    margin-left: 3%;
+    color: #212F3F;
+}
+
+.return:hover {
+    color: dodgerblue;
+}
+
+.catlog-header {
+    font-family: 'Sigmar One', cursive;
+    font-size: xxx-large;
+    text-align: center;
+}
+
+/* === Profiles page === */
+.profiles-page {
+    background-color: #F8CA84;
 }

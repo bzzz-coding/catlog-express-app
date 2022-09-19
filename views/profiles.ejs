@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,900;1,400&family=Sigmar+One&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <title>Profiles</title>
+</head>
+
+<body class="profiles-page">
+                      <img src="https://uc966276d38cacc73b82d27245d7.previews.dropboxusercontent.com/p/thumb/ABo7VMGKWXIJWJRz16t83YZQibHBLYE9GZGkDwybqiDJyahEjfRhyqfG2wfB4aavDkB_MvooFKWsLA2bYQ2WQojmzBX3rVZ-KqEQyAsXS4mypbB3xuum0ufLLYtlq2MUW79tRzZ8leUP0UhF5JSH0QpkiO9OAfQuT57ZRi4WNnO0adSZUNJWunBf6cC9wGTa9mm3CjTh9tRRT8dKbxDoNlHIo0gSX2UQRqmhbnP241yLGm6JM3WY6BH4lvPb8BZYPHjUZpY4n_dhVmh0kE5MgLEuB3efAb8bUk9nsGe2W7pNPEepoJGyLtMWjiFWh9u99jNXnZ921kFvzjN5h_XvjFZp76WRH3PpgPN5phqhyVwPc_O3ZVHCns8718UzZRahx78era1TiPFq4CoFI9O72l_LB9pcjQRlSQDkcd2_A6fYtg/p.jpeg" alt="This is the hard coded image">
+                    <img src="https://lh3.googleusercontent.com/pYh_tkgjOioVG4A6VNJEnMNZ5ktWwJREiFgSspoH2vkMm9bofLGunWtJ53AKAW0QXeb_O1NFrJo0xjWgewxTmmaxJJRcq2KSVCvOqfffQFyJ5qgd1s0WO5xbnB-dcCrnHW__-Vtf=w2400" alt="Google Photo">
+                    <img src="https://lh3.googleusercontent.com/WHg_A0wregKB5SonPBv1jwnETAd0l8p2dyr-DxG5n_sM6Ey20WE1M4bexBX53bf_JBWw67WOsL6T" alt="Someone else's Google photo">
+    <div class="list-group">
+
+        <!-- only show the first 30 logs -->
+        <% for (let i = 0; i < info.length; i++) { %>
+           
+         
+                  <h5 class="mb-1"><%= info[i][0] %></h5>
+                  <h6><%= info[i][1] %></h6>
+                  <!-- <img class="profile-img" src=<%= info[i][2] %>/> -->
+                  <img src="<%= info[i][2] %>" alt="why?">
+                  <small><%= info[i][3] %></small>
+       
+         
+            <% } %>
+    </div>
+
+    <script src="/main.js"></script>
+</body>
+
+</html>

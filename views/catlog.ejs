@@ -5,72 +5,227 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cat Foster Log</title>
+    <title>Catlog</title>
 
+    <!-- Bootstrap5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,900;1,400&family=Sigmar+One&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="/style.css">
 </head>
 
-<body>
-    <h1>Catlog</h1>
+<body class="catlog-page">
+<a class="return" href="/">Back to Home</a>
+<h1 class="catlog-header">CATLOG</h1>
 
+<section class="catlog-main">
+    
     <section class="row">
         <section class="column">
             <h2>Input Cat Data Here</h2>
+
+            <!-- ****** INPUT FORM WITH METHOD SET TO "POST" AND URL POINTING TO '/api' ****** -->
             <form action="/api" method="POST">
-                <input type="text" placeholder="Cat Name" name="name">
-                <input type="date" value="2022-08-01" placeholder="Data Entry Date" name="date">
-                <input type="number" placeholder="Birth Year (estimated)" min="2000" max="2022" step="1" value="2022" />
-                <input type="weight" placeholder="Body Weight" name="weight">
-                <input type="text" placeholder="Sex" name="sex">
 
-                <label for="fixing">Neutered/Spayed?</label>
-                <select id="fixing" name="fixing">
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                </select>
+                <!-- name -->
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Cat Name</span>
+                    <input name="name" type="text" class="form-control" placeholder="Cat Name" aria-label="catname"
+                        aria-describedby="basic-addon1">
+                </div>
 
-                <label for="shots">Vaccines up to date?</label>
-                <select id="shots" name="shots">
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                </select>
+                <!-- date -->
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Data Entry Date</span>
+                    <input name="date" type="date" class="form-control" placeholder="Data Entry Date" value="2022-08-01"
+                        aria-label="entrydate" aria-describedby="basic-addon1">
+                </div>
 
-                <input type="text" placeholder="Favorite Wet Food" name="wetFood">
-                <input type="text" placeholder="Favorite Dry Food" name="dryFood">
+                <!-- birthYear -->
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Birth Year</span>
+                    <input name="birthYear" class="form-control" type="number" placeholder="Birth Year (estimated)"
+                        min="2000" max="2022" step="1" value="2022" aria-label="birthyear"
+                        aria-describedby="basic-addon1">
+                </div>
 
-                
-                <textarea cols="40" rows="5" type="text" placeholder="Feeding Note" name="feedingNote"></textarea>
+                <!-- weight -->
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Body Weight</span>
+                    <input name="weight" class="form-control" type="number" placeholder="Birth Year (estimated)"
+                        min="0.1" max="50" step="0.1" value="10" aria-label="weight" aria-describedby="basic-addon1">
+                    <span class="input-group-text" id="basic-addon1">lbs</span>
+                </div>
 
-                <input type="text" placeholder="Image" name="image">
-                
-                <textarea cols="40" rows="5" type="text" placeholder="Other Notes" name="otherNote"></textarea>
-                <button type="submit">Submit New</button>
-                <button type="button" id="updateButton">Update Existing</button>
+                <!-- sex -->
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="inputGroupSelect01">Sex</label>
+                    <select name="sex" class="form-select" id="inputGroupSelect01">
+                        <option selected>Choose...</option>
+                        <option value="Male">Boy</option>
+                        <option value="Female">Girl</option>
+                        <option value="unknown">Not Sure</option>
+                    </select>
+                </div>
+
+
+                <!-- fixing -->
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="inputGroupSelect02">Neutered/Spayed?</label>
+                    <select name="fixing" class="form-select" id="inputGroupSelect02">
+                        <option selected>Choose...</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="unknown">Not Sure</option>
+                    </select>
+                </div>
+
+                <!-- vaccines -->
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="inputGroupSelect03">Vaccines up to date?</label>
+                    <select name="vaccines" class="form-select" id="inputGroupSelect03">
+                        <option selected>Choose...</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="unknown">Not Sure</option>
+                    </select>
+                </div>
+
+                <!-- wetFood -->
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Favorite Wet Food</span>
+                    <input name="wetFood" type="text" class="form-control" placeholder="Please specify brand and flavor"
+                        aria-label="wetfood" aria-describedby="basic-addon1">
+                </div>
+
+                <!-- dryFood -->
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Favorite Dry Food</span>
+                    <input name="dryFood" type="text" class="form-control" placeholder="Please specify brand and flavor"
+                        aria-label="dryfood" aria-describedby="basic-addon1">
+                </div>
+
+                <!-- feedingNote -->
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Feeding Note</span>
+                    <textarea name="feedingNote" class="form-control"
+                        placeholder="Feeding times, serving size, special diet, etc." aria-label="textarea"></textarea>
+                </div>
+
+                <!-- image -->
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Image</span>
+                    <input name="image" type="text" class="form-control" placeholder="Link to image" aria-label="image"
+                        aria-describedby="basic-addon1">
+                </div>
+
+                <!-- otherNote -->
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Other Note</span>
+                    <textarea name="otherNote" class="form-control"
+                        placeholder="Medical conditions, personality, favorite things to do, etc."
+                        aria-label="textarea"></textarea>
+                </div>
+
+                <!-- ****** SUBMIT NEW OR UPDATE EXISTING LOG ****** -->
+                <div class="btn-row">
+                    <!-- submit -->
+                    <button type="submit" class="btn btn-light mb-3 me-1">Submit New Log</button>
+
+                    <!-- updateButton -->
+                    <button type="button" id="updateButton" class="btn btn-outline-light mb-3 ms-1">
+                        Update Existing Log
+                    </button>
+                </div>
+
             </form>
         </section>
 
+
+        <!-- ****** DELETE A LOG ****** -->
         <section class="column">
+
             <h2>Delete Cat Data HERE</h2>
-            <input class="nameToDelete" type="text" placeholder="Name to delete" name="nameToDelete" id="deleteInput">
-            <input class="dateToDelete" type="date" value="2022-08-01" name="dateToDelete">
-            <button id="deleteButton">Delete</button>
+
+            <!-- .nameToDelete -->
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Cat Name</span>
+                <input type="text" class="form-control nameToDelete" placeholder="Cat Name" aria-label="deletecatname"
+                    aria-describedby="basic-addon1">
+            </div>
+
+            <!-- .dateToDelete -->
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Date to Delete</span>
+                <input value="2022-08-01" type="date" class="form-control dateToDelete" placeholder="Date to delete"
+                    aria-label="deletedate" aria-describedby="basic-addon1">
+            </div>
+
+            <div class="btn-row">
+                <!-- #deleteButton -->
+                <button id="deleteButton" class="btn btn-outline-light mb-3 ms-1" type="button">Delete</button>
+            </div>
 
             <h2>Most Recent Catlog</h2>
-            <% for (let i = info.length - 1; i > Math.max(0, (info.length - 30)); i--) { %>
-                <li class="alien">
-                    <span>
-                        <%= info[i][0] %> 
-                    </span> <span>
-                        <%= info[i][1] %>
-                    </span>
-                </li>
-                <% } %>
-                    </ul>
+
+            <div class="list-group">
+                <!-- only show the first 30 logs -->
+                <% for (let i = Math.max(0, (info.length - 30)); i < info.length; i++) { %>
+                    <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                        <div class="d-flex w-100 justify-content-between">
+                          <h5 class="mb-1"><%= info[i][0] %></h5>
+                          <% if (info[i][2]) { %>
+                            <small>Updated on: <%= info[i][2] %></small>
+                          <% } %>
+                          <small><%= info[i][1] %></small>
+                        </div>
+                        <!-- <p class="mb-1"><%= info[i][1] %></p> -->
+                        <!-- <small>And some small print.</small> -->
+                      </a>
+                    <!-- <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                        <span>
+                            <%= info[i][0] %>
+                        </span> <span>
+                            <%= info[i][1] %>
+                        </span>
+                    </a> -->
+                    <% } %>
+                        <!-- <a href="#" class="list-group-item list-group-item-action">A second link item</a>
+                <a href="#" class="list-group-item list-group-item-action">A third link item</a>
+                <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
+                <a class="list-group-item list-group-item-action disabled">A disabled link item</a> -->
+            </div>
+
+            <!-- <ul>
+                <% for (let i=info.length - 1; i>= Math.max(0, (info.length - 30)); i--) { %>
+                    <li class="alien">
+                        <span><%= info[i][0] %></span> <span><%= info[i][1] %></span>
+                    </li>
+                    <% } %>
+            </ul> -->
         </section>
+
     </section>
 
 
+</section>
+    
+    <!-- Client-side script -->
     <script src="/main.js"></script>
+
+    <!-- Bootstrap5 script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+
 </body>
 
 </html>
